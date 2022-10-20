@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RichText Editor</title>
+    <link rel="stylesheet" href="RichTextEditor.css">
+    <script src="tools.js"></script>
+    <script src="RichTextEditor.js"></script>
+    <script>
+        function init() {
+            var boxes = document.getElementsByClassName("rte_box");
+            for (var i = 0; i < boxes.length; i++) {
+                new RichTextEditor(boxes[i], function (id) {
+                   return function(html) {
+                        document.getElementById("results").innerHTML = "Editor id: " + id + html;
+                    }
+                }(boxes[i].id));
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <div id="edit1" class="rte_box" style="width: 600px; min-height: 400px;"></div>
+    <p></p>
+    <div id="edit2" class="rte_box" style="width: 600px; min-height: 400px;"></div>
+    <p></p>
+    <div id="results"></div>
+</body>
+
+</html>
